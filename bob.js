@@ -25,7 +25,7 @@ gameInput.keydown(function(keydownEvent) {
         var timesSplit = nS.split("x");
         var oneNumber = parseFloat(timesSplit[0]);
         var twoNumber = parseFloat(timesSplit[1]);
-        console.log(oneNumber, twoNumber)
+        console.log("AsdadF", nS, oneNumber, twoNumber)
         var multiply = (oneNumber * twoNumber);
         var multiplyFinal = String(multiply);
         console.log("3")
