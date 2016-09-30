@@ -32,6 +32,7 @@ gameInput.keydown(function(keydownEvent) {
         debugger
       }
       if (isMinus > -1); {
+        debugger
         var minusSplit = nS.split("-");
         var fNumber = parseInt(minusSplit[0]);
         var sNumber = parseInt(minusSplit[1]);
@@ -41,6 +42,7 @@ gameInput.keydown(function(keydownEvent) {
         gameOutput.html(subtractFinal)
       }
        if (isAdd > -1); {
+         debugger
         var plusSplit = nS.split("+");
         var firstNumber = parseFloat(plusSplit[0]);
         var secondNumber = parseFloat(plusSplit[1]);
