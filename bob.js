@@ -25,13 +25,11 @@ gameInput.keydown(function(keydownEvent) {
         var timesSplit = nS.split("x");
         var oneNumber = parseFloat(timesSplit[0]);
         var twoNumber = parseFloat(timesSplit[1]);
-        console.log("AsdadF", nS, oneNumber, twoNumber)
-        var multiply = (oneNumber * twoNumber);
-        debugger;
+        var multiply = (oneNumber * twoNumber);        
         console.log(multiply);
-        var multiplyFinal = String(multiply);
-        console.log("3")
+        var multiplyFinal = String(multiply);        
         gameOutput.html(multiplyFinal)
+        debugger
       }
       if (isMinus > -1); {
         var minusSplit = nS.split("-");
