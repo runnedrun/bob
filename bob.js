@@ -15,13 +15,25 @@ gameInput.keydown(function(keydownEvent) {
     var isGood = str.indexOf("good");
     var isHow = str.indexOf("how are");
     var isBye = str.indexOf("bye");
+    var isBob = str.indexOf("bob");
+    var isWorking = str.indexOf("working");
+    if (isWorking > -1) {
+      gameOutput.html("yes")
+    }
+    if (isBob > -1) {
+      gameOutput.html("that is my name, don't wear it out")
+    }
     var CalculateFunction = str.indexOf("/calculate")
+    var googleFunction = str.indexOf("/google")
+    if (googleFunction > -1) {
+      //do wikipedia things
     if (CalculateFunction > -1) {
       var nS = str.split("/calculate")[1];
       var isAdd = nS.indexOf("+");
       var isTimes = nS.indexOf("x");
       var isMinus = nS.indexOf("-");
-      if (isTimes > -1); {
+      var isDivide =nS.indexOf("/");
+      if (isTimes > -1) {
         var timesSplit = nS.split("x");
         var oneNumber = parseFloat(timesSplit[0]);
         var twoNumber = parseFloat(timesSplit[1]);
@@ -29,20 +41,17 @@ gameInput.keydown(function(keydownEvent) {
         console.log(multiply);
         var multiplyFinal = String(multiply);        
         gameOutput.html(multiplyFinal)
-        debugger
       }
-      if (isMinus > -1); {
-        debugger
+      if (isMinus > -1) {        
         var minusSplit = nS.split("-");
         var fNumber = parseInt(minusSplit[0]);
         var sNumber = parseInt(minusSplit[1]);
-        var subtract = (fNumber + sNumber);
+        var subtract = (fNumber - sNumber);
         var subtractFinal = String(subtract);
         console.log("3")
         gameOutput.html(subtractFinal)
       }
-       if (isAdd > -1); {
-         debugger
+       if (isAdd > -1) {         
         var plusSplit = nS.split("+");
         var firstNumber = parseFloat(plusSplit[0]);
         var secondNumber = parseFloat(plusSplit[1]);
@@ -50,6 +59,15 @@ gameInput.keydown(function(keydownEvent) {
         var addFinal = String(add);
         console.log("3")
         gameOutput.html(addFinal)
+      }
+      if (isDivide > -1) {         
+        var divideSplit = nS.split("/");
+        var firstoneNumber = parseFloat(divideSplit[0]);
+        var secondtwoNumber = parseFloat(divideSplit[1]);
+        var divide = (firstoneNumber / secondtwoNumber);
+        var divideFinal = String(divide);
+        console.log("3")
+        gameOutput.html(divideFinal)
       }
     }
     if (isBye > -1) {
