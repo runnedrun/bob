@@ -25,8 +25,8 @@ gameInput.keydown(function(keydownEvent) {
     }
     var CalculateFunction = str.indexOf("/calculate")
     var googleFunction = str.indexOf("/google")
-    if (googleFunction > -1) {
-      //do wikipedia things
+//    if (googleFunction > -1) {
+//      //do wikipedia things
     if (CalculateFunction > -1) {
       var nS = str.split("/calculate")[1];
       var isAdd = nS.indexOf("+");
