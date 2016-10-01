@@ -18,7 +18,6 @@ function getWikiIntro(title, processor) {
     }
   })
 }
-ga
 gameInput.keydown(function(keydownEvent) {
   // the key code for enter is 13
   console.log(gameOutput)
@@ -89,6 +88,12 @@ gameInput.keydown(function(keydownEvent) {
         console.log("3")
         gameOutput.html(divideFinal)
       }
+    }
+    if (isWorking > -1) {
+      gameOutput.html("yes")
+    }
+    if (isBob > -1) {
+      gameOutput.html("that is my name, don't wear it out")
     }
     if (isBye > -1) {
       gameOutput.html("adios!")
