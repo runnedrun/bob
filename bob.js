@@ -1,5 +1,24 @@
 var gameInput = $("#game-input");
 var gameOutput  = $("#game-output");
+function getWikiIntro(title, processor) {
+  console.log("hello")
+  $.ajax({
+    method: "GET",
+    url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=" + title,    
+    dataType: "jsonp",
+    jsonp: "callback",
+    success: function(res) {
+      var pages = res.query && res.query.pages
+      if (pages) {
+        var pageKeys = Object.keys(pages);
+        var text = pages[pageKeys[0]].extract;          
+        var processed = processor(text);
+        $("#game-output").text(processed);
+      }                
+    }
+  })
+}
+ga
 gameInput.keydown(function(keydownEvent) {
   // the key code for enter is 13
   console.log(gameOutput)
@@ -24,10 +43,16 @@ gameInput.keydown(function(keydownEvent) {
       gameOutput.html("that is my name, don't wear it out")
     }
     var CalculateFunction = str.indexOf("/calculate")
-    var googleFunction = str.indexOf("/google")
-//    if (googleFunction > -1) {
-//      //do wikipedia things
-//    }
+    var GoogleFunction = str.indexOf("/google")
+    if (GoogleFunction > -1) {
+      var title = str.split("/google")[1];
+      getWikiIntro(title, function(text) {
+
+        gameOutput.html(text)
+
+      })
+
+    }
     if (CalculateFunction > -1) {
       var nS = str.split("/calculate")[1];
       var isAdd = nS.indexOf("+");
