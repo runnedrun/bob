@@ -16,7 +16,7 @@ body {
 #output-wrapper {
   background-color: lightslategray;
   border: 5px solid darkslategray;
-  height: 700px;
+  height: 500px;
   width: 300px;
   text-align: center;
   color: cornsilk;
@@ -35,7 +35,7 @@ body {
   border-radius: 50px;
   width: 350px;
   text-align: center;
-  height: 150px;
+  height: 450px;
   top:50px;
   left: 75px;
   size: 15px;
