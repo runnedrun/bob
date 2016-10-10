@@ -28,6 +28,7 @@ $("#sienter").click(function(accountSignIn) {
   var userReal = extUser.indexOf(UserDatabase);
   var passReal = extPassword.indexOf(passwordDatabase);
   if (userReal > -1) {
+    uReal
   }
   if (passReal > -1) {
   }
