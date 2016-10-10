@@ -1,5 +1,16 @@
 var gameInput = $("#game-input");
 var gameOutput  = $("#game-output");
+var warTurf = $("#turfwar");
+
+var factorial = function(int) {
+  var numbers = _.range(1,int-1)
+  var retval = 1;
+  for (var i=0; i<numbers.length; i++) {
+    retval = retval*numbers[i]
+  }
+  return retval
+}
+
 function getWikiIntro(title, processor) {
   console.log("hello")
   $.ajax({
@@ -18,6 +29,28 @@ function getWikiIntro(title, processor) {
     }
   })
 }
+//onNewValue("leadervalue",function(leaderoutput){
+//  warTurf.append(leaderoutput + ":" + "<br>")
+//  var chatdissapear = warTurf.split(":")
+//  if(chatdissapear.length > 3){
+//    chatdissapear.shift();
+//  }
+//}) 
+
+var listcounter = 0
+//function llistcounter() {
+//  var warSearch = warTurf.match(/:/g)
+//  var listcounter = (listcounter + warSearch)
+//  }
+var leaderList = []
+onNewListItem("lleadervalue",function(lleaderoutput){
+  leaderList.push(lleaderoutput)
+  var lastFour = leaderList.slice(leaderList.length - 5, leaderList.length - 0)  
+  
+  warTurf.html(lastFour.join("<br>"));
+})
+
+
 gameInput.keydown(function(keydownEvent) {
   // the key code for enter is 13
   console.log(gameOutput)
@@ -37,6 +70,12 @@ gameInput.keydown(function(keydownEvent) {
     var isWorking = str.indexOf("working");
     var CalculateFunction = str.indexOf("/calculate")
     var GoogleFunction = str.indexOf("/google")
+    var ClaimFunction = str.indexOf("/say")
+    if (ClaimFunction > -1) {
+      var thisvalue = str.split("/say")[1]
+//      storeValue("leadervalue", thisvalue);
+      addListItem("lleadervalue", thisvalue);
+      }
     if (GoogleFunction > -1) {
       var title = str.split("/google")[1];
       getWikiIntro(title, function(text) {
@@ -51,7 +90,12 @@ gameInput.keydown(function(keydownEvent) {
       var isAdd = nS.indexOf("+");
       var isTimes = nS.indexOf("x");
       var isMinus = nS.indexOf("-");
-      var isDivide =nS.indexOf("/");
+      var isDivide = nS.indexOf("/");
+      var isFactorial = nS.indexOf("!");
+      if (isFactorial > -1) {
+        var factthing = nS.split("!")[0];
+        console.log(factthing)
+      }
       if (isTimes > -1) {
         var timesSplit = nS.split("x");
         var oneNumber = parseFloat(timesSplit[0]);
