@@ -33,6 +33,8 @@ $("#sienter").click(function(accountSignIn) {
   if (passReal > -1) {
     var pReal = 4
   }
-  var isLegit (
+  var isLegit = (pReal + uReal)
+  if (isLegit = 7) {
+  }
   
 })
