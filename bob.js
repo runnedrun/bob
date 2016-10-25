@@ -11,7 +11,8 @@ var factorial = function(int) {
   return retval
 }
 
-function getWikiIntro(title, processor) {
+//store.child("saylist").set(null)
+]function getWikiIntro(title, processor) {
   console.log("hello")
   $.ajax({
     method: "GET",
@@ -42,11 +43,12 @@ var listcounter = 0
 //  var warSearch = warTurf.match(/:/g)
 //  var listcounter = (listcounter + warSearch)
 //  }
-var leaderList = []
-onNewListItem("lleadervalue",function(lleaderoutput){
-  leaderList.push(lleaderoutput)
+var saything = []
+onNewListItem("saylist",function(lleaderoutput){
+  var antiJosh = lleaderoutput.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  saything.push(antiJosh)
   var lastFour = leaderList.slice(leaderList.length - 5, leaderList.length - 0)  
-  
+
   warTurf.html(lastFour.join("<br>"));
 })
 
@@ -73,9 +75,11 @@ gameInput.keydown(function(keydownEvent) {
     var ClaimFunction = str.indexOf("/say")
     if (ClaimFunction > -1) {
       var thisvalue = str.split("/say")[1]
-//      storeValue("leadervalue", thisvalue);
-      addListItem("lleadervalue", thisvalue);
-      }
+      //      storeValue("leadervalue", thisvalue);
+//      var damnitJosh = thisvalue.split("<")[1]
+
+      addListItem("saylist", thisvalue);
+    }
     if (GoogleFunction > -1) {
       var title = str.split("/google")[1];
       getWikiIntro(title, function(text) {
@@ -114,7 +118,7 @@ gameInput.keydown(function(keydownEvent) {
         console.log("3")
         gameOutput.html(subtractFinal)
       }
-       if (isAdd > -1) {         
+      if (isAdd > -1) {         
         var plusSplit = nS.split("+");
         var firstNumber = parseFloat(plusSplit[0]);
         var secondNumber = parseFloat(plusSplit[1]);
@@ -208,6 +212,3 @@ var inc = 0
 function counter() {
   inc = inc + 1;
 } 
-
-
-
